@@ -1,0 +1,829 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PETSc &#8212; PETSc 3.23.4 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="https://petsc.org/release/_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="https://petsc.org/release/_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="https://petsc.org/release/_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="https://petsc.org/release/_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://petsc.org/release/_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://petsc.org/release/_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://petsc.org/release/_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="https://petsc.org/release/_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://petsc.org/release/_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://petsc.org/release/_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://petsc.org/release/_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="https://petsc.org/release/_static/css/custom.css?v=dbe1606d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="https://petsc.org/release/_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="https://petsc.org/release/_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="https://petsc.org/release/_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="https://petsc.org/release/_static/documentation_options.js?v=33f4359d"></script>
+    <script src="https://petsc.org/release/_static/doctools.js?v=9a2dae69"></script>
+    <script src="https://petsc.org/release/_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://petsc.org/release/_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="https://petsc.org/release/_static/copybutton.js?v=a56c686a"></script>
+    <script src="https://petsc.org/release/_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://petsc.org/release/_static/katex.min.js?v=be8ff15f"></script>
+    <script src="https://petsc.org/release/_static/auto-render.min.js?v=ad136472"></script>
+    <script src="https://petsc.org/release/_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="icon" href="https://petsc.org/release/_static/petsc_favicon.png"/>
+    <link rel="index" title="Index" href="https://petsc.org/release/genindex/" />
+    <link rel="search" title="Search" href="https://petsc.org/release/search/" />
+    <link rel="next" title="Overview" href="https://petsc.org/release/overview/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="2025-07-09T04:21:02-0500 (v3.23.4-17-g567a29ea5489)"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="index.html#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="https://petsc.org/release/search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://petsc.org/release/_static/PETSc-TAO_RGB.svg" class="logo__image only-light" alt="PETSc 3.23.4 documentation - Home"/>
+    <script>document.write(`<img src="https://petsc.org/release/_static/PETSc-TAO_RGB_white.svg" class="logo__image only-dark" alt="PETSc 3.23.4 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/overview/">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/install/">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/tutorials/">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/manual/">
+                        User-Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/manualpages/">
+                        C/Fortran API
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/petsc4py/">
+                        petsc4py API
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/faq/">
+                        FAQ
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/community/">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/developers/">
+                        Developers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/miscellaneous/">
+                        Misc.
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://gitlab.com/petsc/petsc" title="GitLab" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitLab</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/overview/">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/install/">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/tutorials/">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/manual/">
+                        User-Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/manualpages/">
+                        C/Fortran API
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/petsc4py/">
+                        petsc4py API
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/faq/">
+                        FAQ
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/community/">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/developers/">
+                        Developers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://petsc.org/release/miscellaneous/">
+                        Misc.
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://gitlab.com/petsc/petsc" title="GitLab" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitLab</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="petsc">
+<h1>PETSc<a class="headerlink" href="index.html#petsc" title="Link to this heading">#</a></h1>
+<p>PETSc, the Portable, Extensible Toolkit for Scientific Computation,
+pronounced PET-see (<a class="reference external" href="https://en.wikipedia.org/wiki/Help:IPA/English#Key">/ˈpɛt-siː/</a>), is
+for the scalable (parallel) solution of scientific
+applications modeled by partial differential equations (PDEs). It has bindings for C, Fortran, and Python (via petsc4py).
+PETSc also contains TAO, the Toolkit for Advanced Optimization, software library.
+They support MPI, and GPUs through
+CUDA, HIP, Kokkos, or OpenCL, as well as hybrid MPI-GPU parallelism; they also support the NEC-SX Tsubasa Vector Engine.
+Immediately jump in and run PETSc and TAO code <a class="reference internal" href="https://petsc.org/release/tutorials/handson/#handson"><span class="std std-ref">Tutorials, by Mathematical Problem</span></a>.</p>
+<section id="news">
+<h2>News<a class="headerlink" href="index.html#news" title="Link to this heading">#</a></h2>
+<p>The exciting <a class="reference internal" href="https://petsc.org/release/community/meetings/2025/#meeting"><span class="std std-ref">2025 PETSc Annual User Meeting</span></a> recently took place May 20-21, 2025 in Buffalo, New York, USA.
+Follow the link for abstracts and talks.</p>
+<p><a class="reference external" href="https://www.siam.org/publications/siam-news/articles/opencarp-personalized-computational-model-of-the-heart-examines-cardiac-rhythm/">SIAM News article</a>
+on the PETSc-powered <a class="reference external" href="https://opencarp.org/">OpenCarp</a> cardiac electrophysiology simulator.</p>
+<p>PETSc is now on <a class="reference external" href="https://bsky.app/profile/petsc.org">BlueSky</a>.</p>
+</section>
+<section id="book">
+<h2>Book<a class="headerlink" href="index.html#book" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><strong>PETSc for Partial Differential Equations: Numerical Solutions in C and Python</strong>, by Ed Bueler.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://my.siam.org/Store/Product/viewproduct/?ProductId=32850137">Book from SIAM Press</a></p></li>
+<li><p><a class="reference external" href="https://play.google.com/store/books/details/Ed_Bueler_PETSc_for_Partial_Differential_Equations?id=tgMHEAAAQBAJ">Google Play E-book</a></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="main-topics">
+<h2>Main Topics<a class="headerlink" href="index.html#main-topics" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/overview/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/install/">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/tutorials/">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/manual/">User-Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/manualpages/">C/Fortran API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/petsc4py/">petsc4py API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/faq/">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/community/">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/developers/">Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://petsc.org/release/miscellaneous/">Misc.</a></li>
+</ul>
+</div>
+<p><a href="https://petsc.org/release/manual/manual.pdf">PETSc/TAO Users Manual in PDF</a></p>
+</section>
+<section id="toolkits-libraries-that-use-petsc">
+<span id="doc-toolkits-use-petsc"></span><h2>Toolkits/libraries that use PETSc<a class="headerlink" href="index.html#toolkits-libraries-that-use-petsc" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/mdolab/adflow">ADflow</a> An open-source
+computational fluid dynamics solver for aerodynamic and
+multidisciplinary optimization</p></li>
+<li><p><a class="reference external" href="https://boutproject.github.io">BOUT++</a> Plasma simulation
+in curvilinear coordinate systems</p></li>
+<li><p><a class="reference external" href="https://www.cs.ox.ac.uk/chaste/">Chaste</a> Cancer, Heart and
+Soft Tissue Environment</p></li>
+<li><p><a class="reference external" href="https://www.code-aster.org/V2/spip.php?rubrique2">code_aster</a>
+open-source general purpose finite element code for solid and
+structural mechanics</p></li>
+<li><p><a class="reference external" href="https://www.code-saturne.org">code_saturne</a>
+open-source general purpose code for fluid dynamics</p></li>
+<li><p><a class="reference external" href="https://github.com/andrealani/COOLFluiD">COOLFluiD</a> CFD,
+plasma and multi-physics simulation package</p></li>
+<li><p><a class="reference external" href="https://dafoam.github.io">DAFoam</a> Discrete adjoint solvers
+with <a class="reference external" href="https://openfoam.com">OpenFOAM</a> for aerodynamic
+optimization</p></li>
+<li><p><a class="reference external" href="https://damask-multiphysics.org">DAMASK</a> Unified multi-physics
+crystal plasticity simulation package</p></li>
+<li><p><a class="reference external" href="https://www.dealii.org/">DEAL.II</a> C++ based finite element
+simulation package</p></li>
+<li><p><a class="reference external" href="https://dune-project.org/sphinx/content/sphinx/dune-fem/">DUNE-FEM</a> Python and C++ based finite element simulation package</p></li>
+<li><p><a class="reference external" href="https://fenicsproject.org/">FEniCS</a> Python based finite
+element simulation package</p></li>
+<li><p><a class="reference external" href="https://www.firedrakeproject.org/">Firedrake</a> Python based
+finite element simulation package</p></li>
+<li><p><a class="reference external" href="https://fluidityproject.github.io/">Fluidity</a> a finite
+element/volume fluids code</p></li>
+<li><p><a class="reference external" href="https://freefem.org/">FreeFEM</a> finite element and boundary element PDE solver
+with embedded domain specific language</p></li>
+<li><p><a class="reference external" href="https://www.getdp.info/">GetDP</a> a General Environment for the Treatment of Discrete Problems</p></li>
+<li><p><a class="reference external" href="https://hippylib.github.io">hIPPYlib</a> <a class="reference external" href="https://fenicsproject.org/">FEniCS</a>-based toolkit
+for solving deterministic and Bayesian inverse
+problems governed by PDEs</p></li>
+<li><p><a class="reference external" href="https://libmesh.github.io">libMesh</a> adaptive finite element
+library</p></li>
+<li><p><a class="reference external" href="https://mfem.org/">MFEM</a> lightweight, scalable C++ library
+for finite element methods</p></li>
+<li><p><a class="reference external" href="https://github.com/esadr/mlsvm">MLSVM</a>, Multilevel Support
+Vector Machines with PETSc.</p></li>
+<li><p><a class="reference external" href="http://mofem.eng.gla.ac.uk/mofem/html">MoFEM</a>, An open
+source, parallel finite element library</p></li>
+<li><p><a class="reference external" href="https://mooseframework.inl.gov/">MOOSE - Multiphysics Object-Oriented Simulation
+Environment</a> finite element
+framework, built on <a class="reference external" href="https://libmesh.github.io">libMesh</a>.</p></li>
+<li><p><a class="reference external" href="http://www.oofem.org">OOFEM</a> object-oriented finite element
+library</p></li>
+<li><p><a class="reference external" href="https://opencarp.org/">OpenCarp</a> Cardiac electrophysiology simulator</p></li>
+<li><p><a class="reference external" href="https://develop.openfoam.com/modules/external-solver">OpenFOAM</a>
+Available as an extension for linear solvers for OpenFOAM</p></li>
+<li><p><a class="reference external" href="https://openfpm.mpi-cbg.de/">OpenFPM</a> framework for particles and mesh simulation</p></li>
+<li><p><a class="reference external" href="http://openfvm.sourceforge.net/">OpenFVM</a> finite volume
+based CFD solver</p></li>
+<li><p><a class="reference external" href="http://permon.vsb.cz/permonsvm.htm">PermonSVM</a> support
+vector machines and
+<a class="reference external" href="http://permon.vsb.cz/permonqp.htm">PermonQP</a> quadratic
+programming</p></li>
+<li><p><a class="reference external" href="https://github.com/dalcinl/PetIGA">PetIGA</a> A framework
+for high performance Isogeometric Analysis</p></li>
+<li><p><a class="reference external" href="https://pflotran.org/">PFLOTRAN</a> An open source, state-of-the-art
+code for massively parallel simulation of subsurface flow, reactive transport, geomechanics, and electrical resistivity tomography</p></li>
+<li><p><a class="reference external" href="https://math.nist.gov/phaml/">PHAML</a> The Parallel
+Hierarchical Adaptive MultiLevel Project</p></li>
+<li><p><a class="reference external" href="https://www.precice.org">preCICE</a> - A fully parallel
+coupling library for partitioned multi-physics simulations</p></li>
+<li><p><a class="reference external" href="https://www.clawpack.org/pyclaw/">PyClaw</a> A massively
+parallel, high order accurate, hyperbolic PDE solver</p></li>
+<li><p><a class="reference external" href="https://slepc.upv.es/">SLEPc</a> Scalable Library for
+Eigenvalue Problems</p></li>
+</ul>
+</section>
+<section id="citing-petsc">
+<span id="doc-index-citing-petsc"></span><h2>Citing PETSc<a class="headerlink" href="index.html#citing-petsc" title="Link to this heading">#</a></h2>
+<p>You can run PETSc programs with the option <code class="docutils notranslate"><span class="pre">-citations</span></code> to print appropriate citations for the software and algorithms being used in that program.</p>
+<p>For general citations on PETSc please use the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@Misc{            petsc-web-page,
+  author        = {Satish Balay and Shrirang Abhyankar and Mark~F. Adams and Steven Benson and Jed
+                  Brown and Peter Brune and Kris Buschelman and Emil~M. Constantinescu and Lisandro
+                  Dalcin and Alp Dener and Victor Eijkhout and Jacob Faibussowitsch and William~D.
+                  Gropp and V\&#39;{a}clav Hapla and Tobin Isaac and Pierre Jolivet and Dmitry Karpeev
+                  and Dinesh Kaushik and Matthew~G. Knepley and Fande Kong and Scott Kruger and
+                  Dave~A. May and Lois Curfman McInnes and Richard Tran Mills and Lawrence Mitchell
+                  and Todd Munson and Jose~E. Roman and Karl Rupp and Patrick Sanan and Jason Sarich
+                  and Barry~F. Smith and Stefano Zampini and Hong Zhang and Hong Zhang and Junchao
+                  Zhang},
+  title         = {{PETS}c {W}eb page},
+  url           = {https://petsc.org/},
+  howpublished  = {\url{https://petsc.org/}},
+  year          = {2025}
+}
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@TechReport{      petsc-user-ref,
+  author        = {Satish Balay and Shrirang Abhyankar and Mark~F. Adams and Steven Benson and Jed
+                  Brown and Peter Brune and Kris Buschelman and Emil Constantinescu and Lisandro
+                  Dalcin and Alp Dener and Victor Eijkhout and Jacob Faibussowitsch and William~D.
+                  Gropp and V\&#39;{a}clav Hapla and Tobin Isaac and Pierre Jolivet and Dmitry Karpeev
+                  and Dinesh Kaushik and Matthew~G. Knepley and Fande Kong and Scott Kruger and
+                  Dave~A. May and Lois Curfman McInnes and Richard Tran Mills and Lawrence Mitchell
+                  and Todd Munson and Jose~E. Roman and Karl Rupp and Patrick Sanan and Jason Sarich
+                  and Barry~F. Smith and Hansol Suh and Stefano Zampini and Hong Zhang and Hong Zhang
+                  and Junchao Zhang},
+  title         = {{PETSc/TAO} Users Manual},
+  institution   = {Argonne National Laboratory},
+  number        = {ANL-21/39 - Revision 3.23},
+  doi           = {10.2172/2476320},
+  year          = {2025}
+}
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@InProceedings{   petsc-efficient,
+  author        = {Satish Balay and William~D. Gropp and Lois Curfman McInnes and Barry~F. Smith},
+  title         = {Efficient Management of Parallelism in Object Oriented Numerical Software
+                  Libraries},
+  booktitle     = {Modern Software Tools in Scientific Computing},
+  editor        = {E. Arge and A.~M. Bruaset and H.~P. Langtangen},
+  publisher     = {Birkh{\&quot;{a}}user Press},
+  pages         = {163--202},
+  year          = {1997}
+}
+</pre></div>
+</div>
+<p>For petsc4py usage please cite</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@Article{         dalcinpazklercosimo2011,
+  title         = {Parallel distributed computing using Python},
+  author        = {Lisandro D. Dalcin and Rodrigo R. Paz and Pablo A. Kler and Alejandro Cosimo},
+  journal       = {Advances in Water Resources},
+  volume        = {34},
+  number        = {9},
+  pages         = {1124 - 1139},
+  note          = {New Computational Methods and Software Tools},
+  issn          = {0309-1708},
+  doi           = {10.1016/j.advwatres.2011.04.013},
+  year          = {2011}
+}
+</pre></div>
+</div>
+<p>For PETSc usage on GPUs please cite</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@Article{         mills2021,
+  title         = {Toward performance-portable {PETS}c for {GPU}-based exascale systems},
+  journal       = {Parallel Computing},
+  volume        = {108},
+  pages         = {102831},
+  year          = {2021},
+  issn          = {0167-8191},
+  doi           = {https://doi.org/10.1016/j.parco.2021.102831},
+  url           = {https://www.sciencedirect.com/science/article/pii/S016781912100079X},
+  author        = {Richard Tran Mills and Mark F. Adams and Satish Balay and Jed Brown and Alp Dener
+}
+</pre></div>
+</div>
+<p>For <code class="docutils notranslate"><span class="pre"><a href="https://petsc.org/release/manualpages/PetscSF/PetscSF/">PetscSF</a></span></code> – parallel communication in PETSc – please cite</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@Article{         petscsf2022,
+  author        = {Zhang, Junchao and Brown, Jed and Balay, Satish and Faibussowitsch, Jacob and
+                  Knepley, Matthew and Marin, Oana and Mills, Richard Tran and Munson, Todd and
+                  Smith, Barry F. and Zampini, Stefano},
+  journal       = {IEEE Transactions on Parallel and Distributed Systems},
+  title         = {The {<a href="https://petsc.org/release/manualpages/PetscSF/PetscSF/">PetscSF</a>} Scalable Communication Layer},
+  year          = {2022},
+  volume        = {33},
+  number        = {4},
+  pages         = {842-853},
+}
+</pre></div>
+</div>
+<p>If you use the <code class="docutils notranslate"><span class="pre"><a href="https://petsc.org/release/manualpages/TS/TS/">TS</a></span></code> component of PETSc please cite the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@TechReport{      abhyankaretal2018,
+  author        = {Shrirang Abhyankar and Jed Brown and Emil M. Constantinescu and Debojyoti Ghosh
+                  and Barry F. Smith and Hong Zhang},
+  title         = {{PETSc/<a href="https://petsc.org/release/manualpages/TS/TS/">TS</a>}: {A} Modern Scalable {ODE/DAE} Solver Library},
+  journal       = {arXiv e-preprints},
+  eprint        = {1806.01437},
+  archiveprefix = {arXiv},
+  year          = {2018},
+}
+</pre></div>
+</div>
+<p>If you utilize the <code class="docutils notranslate"><span class="pre"><a href="https://petsc.org/release/manualpages/TS/TS/">TS</a></span></code> adjoint solver please cite</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@Article{         zhang2022tsadjoint,
+  author        = {Zhang, Hong and Constantinescu, Emil M. and Smith, Barry F.},
+  title         = {{PETSc TSAdjoint: A Discrete Adjoint ODE Solver for First-Order and Second-Order
+                  Sensitivity Analysis}},
+  journal       = {SIAM Journal on Scientific Computing},
+  volume        = {44},
+  number        = {1},
+  pages         = {C1-C24},
+  year          = {2022},
+}
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="https://petsc.org/release/overview/"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="index.html#news">News</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="index.html#book">Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="index.html#main-topics">Main Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="index.html#toolkits-libraries-that-use-petsc">Toolkits/libraries that use PETSc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="index.html#citing-petsc">Citing PETSc</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://gitlab.com/petsc/petsc/-/edit/release/doc/index.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitLab
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="https://petsc.org/release/_sources/index.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="https://petsc.org/release/_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="https://petsc.org/release/_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1991-2025, UChicago Argonne, LLC and the PETSc Development Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.1.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2025-07-09T04:21:02-0500 (v3.23.4-17-g567a29ea5489).
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
